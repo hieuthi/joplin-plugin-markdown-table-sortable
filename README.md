@@ -1,24 +1,17 @@
-# Joplin Plugin
+# Markdown Table: Sortable
 
-This is a template to create a new Joplin plugin.
+This plugin adds the ability to sort rendered tables by clicking on header.
+Beside simple text and numeric sorting, it can also figure out some other types such as money with currency symbol, different date and time format.
+It is based on the [sorttable](https://www.kryogenix.org/code/browser/sorttable/) script of Stuart Langridge with some minor changes.
+You can check the [original post](https://www.kryogenix.org/code/browser/sorttable/) for some advanced usage.
 
-The main two files you will want to look at are:
+![Preview](https://raw.githubusercontent.com/hieuthi/joplin-plugin-markdown-table-sortable/main/docs/preview.png)
 
-- `/src/index.ts`, which contains the entry point for the plugin source code.
-- `/src/manifest.json`, which is the plugin manifest. It contains information such as the plugin a name, version, etc.
+## Usage
 
-## Building the plugin
+Click on the header of to sort, click again to reverser the order.
 
-The plugin is built using Webpack, which creates the compiled code in `/dist`. A JPL archive will also be created at the root, which can use to distribute the plugin.
+This plugin only change the rendered table and not the original markdown text, the ordering is reset whenever the note is updated.
 
-To build the plugin, simply run `npm run dist`.
-
-The project is setup to use TypeScript, although you can change the configuration to use plain JavaScript.
-
-## Updating the plugin framework
-
-To update the plugin framework, run `npm run update`.
-
-In general this command tries to do the right thing - in particular it's going to merge the changes in package.json and .gitignore instead of overwriting. It will also leave "/src" as well as README.md untouched.
-
-The file that may cause problem is "webpack.config.js" because it's going to be overwritten. For that reason, if you want to change it, consider creating a separate JavaScript file and include it in webpack.config.js. That way, when you update, you only have to restore the line that include your file.
+## License
+[MIT](https://raw.githubusercontent.com/hieuthi/joplin-plugin-markdown-table-sortable/main/LICENSE)

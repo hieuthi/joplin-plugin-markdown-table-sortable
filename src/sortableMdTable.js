@@ -18,6 +18,9 @@ module.exports = {
             assets: function () {
                 return [
                     { name: 'sorttable.js' },
+                    { mime: 'text/css',
+                      inline: true,
+                      text: 'table th { cursor: pointer }' },
                 ];
             },
         };

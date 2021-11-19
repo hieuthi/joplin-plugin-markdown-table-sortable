@@ -1,4 +1,18 @@
 /*
+  Modified for Joplin
+  Copyright (c) 2021 Hieu-Thi Luong
+*/
+
+document.addEventListener('joplin-noteDidUpdate', () => {
+  forEach(document.getElementsByTagName('table'), function(table, tabIdx) {
+    if (table.className.search(/\bsortable\b/) != -1) {
+      sorttable.makeSortable(table, tabIdx);
+    }
+  });
+});
+
+
+/*
   SortTable
   version 2
   7th April 2007
@@ -31,15 +45,15 @@ sorttable = {
 
     sorttable.DATE_RE = /^(\d\d?)[\/\.-](\d\d?)[\/\.-]((\d\d)?\d\d)$/;
 
-    forEach(document.getElementsByTagName('table'), function(table) {
+    forEach(document.getElementsByTagName('table'), function(table, tabidx) {
       if (table.className.search(/\bsortable\b/) != -1) {
-        sorttable.makeSortable(table);
+        sorttable.makeSortable(table, tabidx);
       }
     });
 
   },
 
-  makeSortable: function(table) {
+  makeSortable: function(table, tabIdx) {
     if (table.getElementsByTagName('thead').length == 0) {
       // table doesn't have a tHead. Since it should have, create one and
       // put the first table row in it.
@@ -97,10 +111,10 @@ sorttable = {
             sorttable.reverse(this.sorttable_tbody);
             this.className = this.className.replace('sorttable_sorted',
                                                     'sorttable_sorted_reverse');
-            this.removeChild(document.getElementById('sorttable_sortfwdind'));
+            this.removeChild(document.getElementById(tabIdx + '_sorttable_sortfwdind'));
             sortrevind = document.createElement('span');
-            sortrevind.id = "sorttable_sortrevind";
-            sortrevind.innerHTML = stIsIE ? '&nbsp<font face="webdings">5</font>' : '&nbsp;&#x25B4;';
+            sortrevind.id = tabIdx + "_sorttable_sortrevind";
+            sortrevind.innerHTML = stIsIE ? '&nbsp<font face="webdings">5</font>' : ' ▼';
             this.appendChild(sortrevind);
             return;
           }
@@ -110,10 +124,10 @@ sorttable = {
             sorttable.reverse(this.sorttable_tbody);
             this.className = this.className.replace('sorttable_sorted_reverse',
                                                     'sorttable_sorted');
-            this.removeChild(document.getElementById('sorttable_sortrevind'));
+            this.removeChild(document.getElementById(tabIdx + '_sorttable_sortrevind'));
             sortfwdind = document.createElement('span');
-            sortfwdind.id = "sorttable_sortfwdind";
-            sortfwdind.innerHTML = stIsIE ? '&nbsp<font face="webdings">6</font>' : '&nbsp;&#x25BE;';
+            sortfwdind.id = tabIdx + "_sorttable_sortfwdind";
+            sortfwdind.innerHTML = stIsIE ? '&nbsp<font face="webdings">6</font>' : ' ▲';
             this.appendChild(sortfwdind);
             return;
           }
@@ -126,15 +140,15 @@ sorttable = {
               cell.className = cell.className.replace('sorttable_sorted','');
             }
           });
-          sortfwdind = document.getElementById('sorttable_sortfwdind');
+          sortfwdind = document.getElementById(tabIdx + '_sorttable_sortfwdind');
           if (sortfwdind) { sortfwdind.parentNode.removeChild(sortfwdind); }
-          sortrevind = document.getElementById('sorttable_sortrevind');
+          sortrevind = document.getElementById(tabIdx + '_sorttable_sortrevind');
           if (sortrevind) { sortrevind.parentNode.removeChild(sortrevind); }
 
           this.className += ' sorttable_sorted';
           sortfwdind = document.createElement('span');
-          sortfwdind.id = "sorttable_sortfwdind";
-          sortfwdind.innerHTML = stIsIE ? '&nbsp<font face="webdings">6</font>' : '&nbsp;&#x25BE;';
+          sortfwdind.id = tabIdx + "_sorttable_sortfwdind";
+          sortfwdind.innerHTML = stIsIE ? '&nbsp<font face="webdings">6</font>' : ' ▲';
           this.appendChild(sortfwdind);
 
 	        // build an array to sort. This is a Schwartzian transform thing,
@@ -169,7 +183,7 @@ sorttable = {
     for (var i=0; i<table.tBodies[0].rows.length; i++) {
       text = sorttable.getInnerText(table.tBodies[0].rows[i].cells[column]);
       if (text != '') {
-        if (text.match(/^-?[�$�]?[\d,.]+%?$/)) {
+        if (text.match(/^-?[£$¤]?[\d,.]+%?$/)) {
           return sorttable.sort_numeric;
         }
         // check for a date: dd/mm/yyyy or dd/mm/yy

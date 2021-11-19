@@ -10,6 +10,11 @@
   "keywords": [
     "joplin-plugin"
   ],
+  "homepage": "https://github.com/hieuthi/joplin-plugin-markdown-table-sortable",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hieuthi/joplin-plugin-markdown-table-sortable.git"
+  },
   "devDependencies": {
     "@types/node": "^14.0.14",
     "chalk": "^4.1.0",
