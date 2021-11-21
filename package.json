@@ -1,6 +1,6 @@
 {
   "name": "joplin-plugin-markdown-table-sortable",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "dist": "webpack --joplin-plugin-config buildMain && webpack --joplin-plugin-config buildExtraScripts && webpack --joplin-plugin-config createArchive",
     "prepare": "npm run dist",
@@ -8,7 +8,10 @@
   },
   "license": "MIT",
   "keywords": [
-    "joplin-plugin","markdown","table","sorting"
+    "joplin-plugin",
+    "markdown",
+    "table",
+    "sorting"
   ],
   "homepage": "https://github.com/hieuthi/joplin-plugin-markdown-table-sortable",
   "repository": {
