@@ -9,7 +9,7 @@ You can check the [original post](https://www.kryogenix.org/code/browser/sorttab
 
 ## Usage
 
-Click on the header of to sort, click again to reverser the order.
+Click on the header to sort, click again to reverse the order.
 
 This plugin only change the rendered table and not the original markdown text, the ordering is reset whenever the note is updated.
 

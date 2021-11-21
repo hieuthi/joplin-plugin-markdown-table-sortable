@@ -8,7 +8,7 @@
   },
   "license": "MIT",
   "keywords": [
-    "joplin-plugin"
+    "joplin-plugin","markdown","table","sorting"
   ],
   "homepage": "https://github.com/hieuthi/joplin-plugin-markdown-table-sortable",
   "repository": {
