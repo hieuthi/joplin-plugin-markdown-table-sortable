@@ -11,7 +11,8 @@
     "joplin-plugin",
     "markdown",
     "table",
-    "sorting"
+    "sorting",
+    "sortable"
   ],
   "homepage": "https://github.com/hieuthi/joplin-plugin-markdown-table-sortable",
   "repository": {
