@@ -10,10 +10,10 @@ It is based on the [sorttable](https://www.kryogenix.org/code/browser/sorttable/
 
 Click on the header to sort, click again to reverse the order.
 
-From v1.1.0 and later, the string sorting is case-insentitive and there is no option to change it back.
-If you really want case-sentitive sorting you can use [v.1.0.1](https://github.com/hieuthi/joplin-plugin-markdown-table-sortable/releases/tag/v1.0.1).
+From v1.1.0 and later, the string sorting is case-insensitive and there is no option to change it back.
+If you really want case-sensitive sorting you can use [v.1.0.1](https://github.com/hieuthi/joplin-plugin-markdown-table-sortable/releases/tag/v1.0.1).
 
-This plugin only change the rendered table and not the original markdown text, the ordering is reset whenever the note is updated.
+This plugin only change the rendered table and not the original markdown text, the order is reset whenever the note is updated.
 
 ## License
 [MIT](https://raw.githubusercontent.com/hieuthi/joplin-plugin-markdown-table-sortable/main/LICENSE)
