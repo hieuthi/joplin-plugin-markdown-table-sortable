@@ -39,7 +39,7 @@ sorttable = {
     // flag this function so we don't do the same thing twice
     arguments.callee.done = true;
     // kill the timer
-    if (_timer) clearInterval(_timer);
+    if (_timer_sorttable) clearInterval(_timer_sorttable);
 
     if (!document.createElement || !document.getElementsByTagName) return;
 
@@ -372,7 +372,7 @@ if (document.addEventListener) {
 
 /* for Safari */
 if (/WebKit/i.test(navigator.userAgent)) { // sniff
-    var _timer = setInterval(function() {
+    var _timer_sorttable = setInterval(function() {
         if (/loaded|complete/.test(document.readyState)) {
             sorttable.init(); // call the onload handler
         }
