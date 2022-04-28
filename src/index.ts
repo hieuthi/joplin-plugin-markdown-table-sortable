@@ -8,5 +8,16 @@ joplin.plugins.register({
 			'sortableMdTable',
 			'./sortableMdTable.js'
 		);
+		await joplin.contentScripts.register(
+			ContentScriptType.CodeMirrorPlugin,
+			'sortableMdCtrl',
+			'./sortableMdCtrl.js'
+		);
+		await joplin.contentScripts.onMessage('sortableMdTable', (message:any) => {
+			joplin.commands.execute('editor.execCommand', {
+				name: 'sortableApply', args: [message]
+			});
+			joplin.commands.execute('editor.focus');
+		});
 	},
 });

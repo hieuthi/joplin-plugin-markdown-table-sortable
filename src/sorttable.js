@@ -11,6 +11,14 @@ document.addEventListener('joplin-noteDidUpdate', () => {
   });
 });
 
+function applySorting(table){
+  sourceLine = parseInt(table.getAttribute("source-line"));
+  rows = [];
+  for (var i=0; i<table.tBodies[0].rows.length; i++) {
+    rows.push(parseInt(table.tBodies[0].rows[i].dataset.rowIdx));
+  }
+  webviewApi.postMessage('sortableMdTable', {"source-line": sourceLine, "rows": rows});
+}
 
 /*
   SortTable
@@ -65,6 +73,22 @@ sorttable = {
     if (table.tHead == null) table.tHead = table.getElementsByTagName('thead')[0];
 
     if (table.tHead.rows.length != 1) return; // can't cope with two header rows
+
+    // ============================ //
+    //  Joplin Feature: Apply Sort  //
+    // ============================ //
+    tfoot = document.createElement('tfoot');
+    btnA  = document.createElement('a');
+    btnA.className = "sortable-apply";
+    btnA.textContent = "Apply!";
+    btnA.href = '#';
+    btnA.onclick = function () {applySorting(table)}
+    tfoot.appendChild(btnA);
+    table.appendChild(tfoot);
+    // Mark each row with an index (ignore header)
+    for (var i=0; i<table.tBodies[0].rows.length; i++) {
+      table.tBodies[0].rows[i].dataset.rowIdx = i;
+    }
 
     // Sorttable v1 put rows with a class of "sortbottom" at the bottom (as
     // "total" rows, for example). This is B&R, since what you're supposed
