@@ -80,7 +80,7 @@ sorttable = {
     tfoot = document.createElement('tfoot');
     btnA  = document.createElement('a');
     btnA.className = "sortable-apply";
-    btnA.textContent = "Apply!";
+    btnA.textContent = "Apply Sorting!";
     btnA.href = '#';
     btnA.onclick = function () {applySorting(table)}
     tfoot.appendChild(btnA);
@@ -119,15 +119,15 @@ sorttable = {
       if (!headrow[i].className.match(/\bsorttable_nosort\b/)) { // skip this col
         mtch = headrow[i].className.match(/\bsorttable_([a-z0-9]+)\b/);
         if (mtch) { override = mtch[1]; }
-	      if (mtch && typeof sorttable["sort_"+override] == 'function') {
-	        headrow[i].sorttable_sortfunction = sorttable["sort_"+override];
-	      } else {
-	        headrow[i].sorttable_sortfunction = sorttable.guessType(table,i);
-	      }
-	      // make it clickable to sort
-	      headrow[i].sorttable_columnindex = i;
-	      headrow[i].sorttable_tbody = table.tBodies[0];
-	      dean_addEvent(headrow[i],"click", sorttable.innerSortFunction = function(e) {
+        if (mtch && typeof sorttable["sort_"+override] == 'function') {
+          headrow[i].sorttable_sortfunction = sorttable["sort_"+override];
+        } else {
+          headrow[i].sorttable_sortfunction = sorttable.guessType(table,i);
+        }
+        // make it clickable to sort
+        headrow[i].sorttable_columnindex = i;
+        headrow[i].sorttable_tbody = table.tBodies[0];
+        dean_addEvent(headrow[i],"click", sorttable.innerSortFunction = function(e) {
 
           if (this.className.search(/\bsorttable_sorted\b/) != -1) {
             // if we're already sorted by this column, just
@@ -175,29 +175,29 @@ sorttable = {
           sortfwdind.innerHTML = stIsIE ? '&nbsp<font face="webdings">6</font>' : ' ▲';
           this.appendChild(sortfwdind);
 
-	        // build an array to sort. This is a Schwartzian transform thing,
-	        // i.e., we "decorate" each row with the actual sort key,
-	        // sort based on the sort keys, and then put the rows back in order
-	        // which is a lot faster because you only do getInnerText once per row
-	        row_array = [];
-	        col = this.sorttable_columnindex;
-	        rows = this.sorttable_tbody.rows;
-	        for (var j=0; j<rows.length; j++) {
-	          row_array[row_array.length] = [sorttable.getInnerText(rows[j].cells[col]), rows[j]];
-	        }
-	        /* If you want a stable sort, uncomment the following line */
-	        //sorttable.shaker_sort(row_array, this.sorttable_sortfunction);
-	        /* and comment out this one */
-	        row_array.sort(this.sorttable_sortfunction);
+          // build an array to sort. This is a Schwartzian transform thing,
+          // i.e., we "decorate" each row with the actual sort key,
+          // sort based on the sort keys, and then put the rows back in order
+          // which is a lot faster because you only do getInnerText once per row
+          row_array = [];
+          col = this.sorttable_columnindex;
+          rows = this.sorttable_tbody.rows;
+          for (var j=0; j<rows.length; j++) {
+            row_array[row_array.length] = [sorttable.getInnerText(rows[j].cells[col]), rows[j]];
+          }
+          /* If you want a stable sort, uncomment the following line */
+          //sorttable.shaker_sort(row_array, this.sorttable_sortfunction);
+          /* and comment out this one */
+          row_array.sort(this.sorttable_sortfunction);
 
-	        tb = this.sorttable_tbody;
-	        for (var j=0; j<row_array.length; j++) {
-	          tb.appendChild(row_array[j][1]);
-	        }
+          tb = this.sorttable_tbody;
+          for (var j=0; j<row_array.length; j++) {
+            tb.appendChild(row_array[j][1]);
+          }
 
-	        delete row_array;
-	      });
-	    }
+          delete row_array;
+        });
+      }
     }
   },
 
