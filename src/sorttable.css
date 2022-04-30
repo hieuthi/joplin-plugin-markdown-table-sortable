@@ -11,3 +11,7 @@ table:hover tfoot {
   visibility: visible;
 }
 a.sortable-apply {padding:4px}
+
+#rendered-md table:first-child {
+  margin-top: 24px !important;
+}
