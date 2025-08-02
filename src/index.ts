@@ -11,7 +11,7 @@ joplin.plugins.register({
 		await joplin.contentScripts.register(
 			ContentScriptType.CodeMirrorPlugin,
 			'sortableMdCtrl',
-			'./sortableMdCtrl.js'
+			'./sortableMdCtrlCM6.js'
 		);
 		await joplin.contentScripts.onMessage('sortableMdTable', (message:any) => {
 			joplin.commands.execute('editor.execCommand', {

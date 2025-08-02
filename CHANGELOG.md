@@ -1,5 +1,8 @@
 # Changelog
 
+## [v1.3.0] - 2025-08-02
+Fix broken Apply Sorting function to work with latest Joplin version
+
 ## [v1.2.2] - 2022-04-30
 Add apply sorting feature
 
@@ -12,6 +15,7 @@ Update Manifest
 ## [v1.0.0] - 2021-11-19
 Initial version and fully working
 
+[v1.3.0]: https://github.com/hieuthi/joplin-plugin-markdown-table-sortable/compare/v1.2.2...v1.3.0
 [v1.2.2]: https://github.com/hieuthi/joplin-plugin-markdown-table-sortable/compare/v1.1.0...v1.2.2
 [v1.1.0]: https://github.com/hieuthi/joplin-plugin-markdown-table-sortable/compare/v1.0.1...v1.1.0
 [v1.0.1]: https://github.com/hieuthi/joplin-plugin-markdown-table-sortable/compare/v1.0.0...v1.0.1

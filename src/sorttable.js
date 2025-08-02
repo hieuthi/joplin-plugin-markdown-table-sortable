@@ -14,10 +14,15 @@ document.addEventListener('joplin-noteDidUpdate', () => {
 function applySorting(table){
   sourceLine = parseInt(table.getAttribute("source-line"));
   rows = [];
+  message = "" + sourceLine
   for (var i=0; i<table.tBodies[0].rows.length; i++) {
-    rows.push(parseInt(table.tBodies[0].rows[i].dataset.rowIdx));
+    row = table.tBodies[0].rows[i].dataset.rowIdx
+    rows.push(parseInt(row));
+    message = message + "," + row
   }
-  webviewApi.postMessage('sortableMdTable', {"source-line": sourceLine, "rows": rows});
+  //webviewApi.postMessage('sortableMdTable', {"source-line": sourceLine, "rows": rows});
+  webviewApi.postMessage('sortableMdTable', message);
+
 }
 
 /*
